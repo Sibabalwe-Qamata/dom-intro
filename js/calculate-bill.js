@@ -38,41 +38,36 @@ function calculateBtnClicked(){
      var roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
     
-    /***if (billTotal > 20.00 ){
-        
-         var roundedBillTotal = billTotal.toFixed(2);
-         billTotalElement.innerHTML = roundedBillTotal;
-         total.classList.toggle("warning");
-        
-        }
-    else if (billTotal > 30.00){
-         var roundedBillTotal = billTotal.toFixed(2);
-         billTotalElement.innerHTML = roundedBillTotal;
-         total.classList.toggle("danger");
-        
-    }***/
-    //round to two decimals
    
 }
 
 function colorWarning() {
     
    
-     if ( 20.00 <= billTotalElement.innerHTML <= 29.00 ){
+     /**if ( 0.00 <= billTotalElement.innerHTML <= 19.00 ){
     
          billTotalElement.innerHTML;
-         console.log("First One");
+         console.log("ACCEPTABLE");
+         
+         total.classList.toggle("acceptable");
+         
+        
+        }***/
+    
+      if ( 20.00 <= billTotalElement.innerHTML <= 29.00 ){
+    
+         billTotalElement.innerHTML;
+         console.log("Warning");
          
          total.classList.toggle("warning");
+         }
          
-         if(billTotalElement.innerHTML >= 30.00){
+        if(billTotalElement.innerHTML >= 30.00){
              
               billTotalElement.innerHTML;
         
              total.classList.toggle("danger");
-             console.log("Oops am Here!!!");
-            }
-        
+             console.log("Danger");
         }
    /** else if (billTotalElement.innerHTML >= 30.00){
          billTotalElement.innerHTML;
