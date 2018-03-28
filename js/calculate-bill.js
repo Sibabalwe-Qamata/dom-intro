@@ -54,20 +54,20 @@ function colorWarning() {
         
         }***/
     
-      if ( 20.00 <= billTotalElement.innerHTML <= 29.00 ){
+       if (billTotalElement.innerHTML >= 20.00 ){
     
          billTotalElement.innerHTML;
-         console.log("Warning");
+         //console.log("Warning");
          
          total.classList.toggle("warning");
          }
          
-        if(billTotalElement.innerHTML >= 30.00){
+         if(billTotalElement.innerHTML >= 30.00){
              
               billTotalElement.innerHTML;
         
              total.classList.toggle("danger");
-             console.log("Danger");
+           //  console.log("Danger");
         }
    /** else if (billTotalElement.innerHTML >= 30.00){
          billTotalElement.innerHTML;
