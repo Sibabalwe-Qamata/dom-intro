@@ -11,6 +11,12 @@
   font-weight: bold;
 }
 
+.acceptable{
+     color: black;
+     font-weight: bold;
+    
+}
+
 .danger {
   color: crimson;
   font-weight: bold;

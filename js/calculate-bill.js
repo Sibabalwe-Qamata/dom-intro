@@ -8,6 +8,8 @@ var calculateBtn = document.querySelector(".calculateBtn");
 //get a reference to the billTotal element
 var billTotalElement = document.querySelector(".billTotal");
 
+var total = document.querySelector(".total");
+
 
 //create the function that will be called when the calculate button is pressed
 //  * this function should read the string value entered - split it on a comma.
@@ -33,10 +35,60 @@ function calculateBtnClicked(){
             billTotal += 0.75;
         }
     }
-    
-    //round to two decimals
-    var roundedBillTotal = billTotal.toFixed(2);
+     var roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
+    
+    /***if (billTotal > 20.00 ){
+        
+         var roundedBillTotal = billTotal.toFixed(2);
+         billTotalElement.innerHTML = roundedBillTotal;
+         total.classList.toggle("warning");
+        
+        }
+    else if (billTotal > 30.00){
+         var roundedBillTotal = billTotal.toFixed(2);
+         billTotalElement.innerHTML = roundedBillTotal;
+         total.classList.toggle("danger");
+        
+    }***/
+    //round to two decimals
+   
 }
 
-calculateBtn.addEventListener('click', calculateBtnClicked);
+function colorWarning() {
+    
+   
+     if ( 20.00 <= billTotalElement.innerHTML <= 29.00 ){
+    
+         billTotalElement.innerHTML;
+         console.log("First One");
+         
+         total.classList.toggle("warning");
+         
+         if(billTotalElement.innerHTML >= 30.00){
+             
+              billTotalElement.innerHTML;
+        
+             total.classList.toggle("danger");
+             console.log("Oops am Here!!!");
+            }
+        
+        }
+   /** else if (billTotalElement.innerHTML >= 30.00){
+         billTotalElement.innerHTML;
+        
+         total.classList.toggle("danger");
+        
+         console.log("Oops am Here else if executed");
+    }  ***/
+    
+}
+
+calculateBtn.addEventListener('click', function(){
+    calculateBtnClicked();
+    colorWarning();
+    
+});
+
+//calculateBtn.addEventListener('click', calculateBtnClicked);
+
