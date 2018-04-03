@@ -51,37 +51,3 @@ RadioTotalAddBtn.addEventListener('click', function(){
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
-
-console.log("Oops End of Execution!!!");
-//add an event listener for when the add button is pressed
-/***function RadioBillTotal(){
-    // get the value entered in the billType textfield
-   var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
-   var billItemType = checkedRadioBtn.value
-    // update the correct total
-   console.log(billItemType);
-    if (billItemType === "call"){
-        callsTotal += 2.75
-    }
-    else if (billItemType === "sms"){
-        smsTotal += 0.75;
-    }
-    
-    //update the totals that is displayed on the screen.
-    callsTotalElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalElem.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totalCostElem.innerHTML = totalCost.toFixed(2);
-    
-    
-      
-    //color the total based on the criteria
-    if (totalCost >= 50){
-        // adding the danger class will make the text red
-        totalCostElem.classList.add("danger");
-    }
-    else if (totalCost >= 30){
-        totalCostElem.classList.add("warning");
-    }
-}***/
-

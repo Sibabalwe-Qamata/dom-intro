@@ -30,12 +30,13 @@ function textBillTotal(){
     var billTypeEntered = billTypeText.value.trim();
     // update the correct total
     if (billTypeEntered === "call"){
-        callsTotal += 2.75
+        callsTotal += 2.75;
     }
     else if (billTypeEntered === "sms"){
         smsTotal += 0.75;
     }
     
+  
     //update the totals that is displayed on the screen.
     callsTotalElem.innerHTML = callsTotal.toFixed(2);
     smsTotalElem.innerHTML = smsTotal.toFixed(2);
@@ -47,13 +48,17 @@ function textBillTotal(){
     //color the total based on the criteria
     if (totalCost >= 50){
         // adding the danger class will make the text red
+        callsTotalElem.innerHTML = callsTotal.toFixed(2);
         totalCostElem.classList.add("danger");
     }
     else if (totalCost >= 30){
         totalCostElem.classList.add("warning");
+        smsTotalElem.innerHTML = smsTotal.toFixed(2);
     }
 }
-textTotalAddBtn.addEventListener('click', textBillTotal);
+textTotalAddBtn.addEventListener('click', function(){
+    textBillTotal();
+});
 
 
 
