@@ -43,21 +43,10 @@ function calculateBtnClicked(){
 
 function colorWarning() {
     
-   
-     /**if ( 0.00 <= billTotalElement.innerHTML <= 19.00 ){
-    
-         billTotalElement.innerHTML;
-         console.log("ACCEPTABLE");
-         
-         total.classList.toggle("acceptable");
-         
-        
-        }***/
-    
        if (billTotalElement.innerHTML >= 20.00 ){
     
          billTotalElement.innerHTML;
-         //console.log("Warning");
+         
          
          total.classList.toggle("warning");
          }
@@ -67,16 +56,9 @@ function colorWarning() {
               billTotalElement.innerHTML;
         
              total.classList.toggle("danger");
-           //  console.log("Danger");
+         
         }
-   /** else if (billTotalElement.innerHTML >= 30.00){
-         billTotalElement.innerHTML;
-        
-         total.classList.toggle("danger");
-        
-         console.log("Oops am Here else if executed");
-    }  ***/
-    
+
 }
 
 calculateBtn.addEventListener('click', function(){
@@ -85,5 +67,5 @@ calculateBtn.addEventListener('click', function(){
     
 });
 
-//calculateBtn.addEventListener('click', calculateBtnClicked);
+
 

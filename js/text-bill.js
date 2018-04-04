@@ -25,7 +25,8 @@ var smsTotalElem = document.querySelector(".smsTotalOne");
 
 
 //add an event listener for when the add button is pressed
-function textBillTotal(){
+function textBillTotal()
+{
     // get the value entered in the billType textfield
     var billTypeEntered = billTypeText.value.trim();
     // update the correct total
@@ -35,6 +36,8 @@ function textBillTotal(){
     else if (billTypeEntered === "sms"){
         smsTotal += 0.75;
     }
+    console.log("calls",callsTotal);
+    console.log("sms",smsTotal);
     
   
     //update the totals that is displayed on the screen.
@@ -44,7 +47,7 @@ function textBillTotal(){
     totalCostElem.innerHTML = totalCost.toFixed(2);
     
     
-      
+      console.log("Total cost: ",totalCost);
     //color the total based on the criteria
     if (totalCost >= 50){
         // adding the danger class will make the text red
@@ -58,8 +61,7 @@ function textBillTotal(){
         smsTotalElem.innerHTML = smsTotal.toFixed(2);
     }
 }
-textTotalAddBtn.addEventListener('click', 
-    function()
+textTotalAddBtn.addEventListener('click',function()
     {
     textBillTotal();
     }
