@@ -51,21 +51,17 @@ function textBillTotal()
     //color the total based on the criteria
     if (totalCost >= 50){
         // adding the danger class will make the text red
-        callsTotalElem.innerHTML = callsTotal.toFixed(2);
-        smsTotalElem.innerHTML = smsTotal.toFixed(2);
+        //callsTotalElem.innerHTML = callsTotal.toFixed(2);
+        //smsTotalElem.innerHTML = smsTotal.toFixed(2);
         totalCostElem.classList.add("danger");
     }
     else if (totalCost >= 30){
         totalCostElem.classList.add("warning");
-        callsTotalElem.innerHTML = callsTotal.toFixed(2);
-        smsTotalElem.innerHTML = smsTotal.toFixed(2);
+        //callsTotalElem.innerHTML = callsTotal.toFixed(2);
+        //smsTotalElem.innerHTML = smsTotal.toFixed(2);
     }
 }
-textTotalAddBtn.addEventListener('click',function()
-    {
-    textBillTotal();
-    }
-);
 
+textTotalAddBtn.addEventListener('click', textBillTotal);
 
 

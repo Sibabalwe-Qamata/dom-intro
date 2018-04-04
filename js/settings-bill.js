@@ -1,8 +1,7 @@
 var callsTotalBill = 0;
 var smsTotalBill = 0;
 
-var warningVariable = 0;
-var criticalLevel = 0;
+
 // get a reference to the sms or call radio buttons
 var callsTotalSettings = document.querySelector(".callTotalSettings");
 var smsTotalSettings = document.querySelector(".smsTotalSettings");
@@ -19,43 +18,61 @@ var BillTotalAddBtn = document.querySelector(".BillAddBtn");
 //get a reference to the 'Update settings' button
 var settingsBtn = document.querySelector(".updateSettings");
 // create a variables that will keep track of all the settings
-//var settings = document.querySelector();
+var warningVariable = 0;
+var criticalVariable = 0;
+var smsCostVariable =0;
+var callCostVariable =0;
 // create a variables that will keep track of all three totals.
 var totalCostSettings = document.querySelector(".totalSettings");
 //add an event listener for when the 'Update settings' button is pressed
-settingsBtn.addEventListener('click', 
-    function()
+
+
+
+ function updateSettings()
     {
-       
+       var call_billSettingEntered = callCostStt.value;
+       var sms_billSettingEntered = smsCostStt.value;
+       var warning_billSettingEntered = warningLevel.value;
+       var critical_billSettingEntered = criticalLevel.value;
+    
+       callCostVariable = call_billSettingEntered; 
+       smsCostVariable =  sms_billSettingEntered;
+       criticalVariable =  critical_billSettingEntered;
+       warningVariable = warning_billSettingEntered;
+       //console.log("Call:",callCostVariable);
+       //console.log("SMS:",smsCostVariable);
+       //console.log("critical:",criticalVariable);
+       //console.log("warning:", warningVariable);
     }
-);
+settingsBtn.addEventListener('click',updateSettings);
 
 //add an event listener for when the add button is pressed
 BillTotalAddBtn.addEventListener('click',
-    function()
+   function()
    {
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     var billItem = checkedRadioBtn.value;
-    console.log(billItem);
+   
     // update the correct total
     if (billItem === "call"){
-        callsTotalBill += 2.75
+         callsTotalBill = callCostVariable + callsTotalBill;
         
     }
     else if (billItem === "sms"){
-        smsTotalBill += 0.75;
+        smsTotalBill =  smsCostVariable + smsTotalBill ;
     }
-    
+    console.log("calls",callsTotalBill);
+    console.log("sms",smsTotalBill);
     //update the totals that is displayed on the screen.
-    callsTotalSettings.innerHTML = callsTotalBill.toFixed(2);
-    console.log(callsTotalSettings);
-    smsTotalSettings.innerHTML = smsTotalBill.toFixed(2);
-    console.log(smsTotalSettings);
+    callsTotalSettings.innerHTML = callsTotalBill;
+ 
+    smsTotalSettings.innerHTML = smsTotalBill;
+
     var totalCostbill = callsTotalBill + smsTotalBill;
-    totalCostSettings.innerHTML = totalCostbill.toFixed(2);
+    totalCostSettings.innerHTML = totalCostbill;
+    console.log("total",totalCostbill);
     //color the total based on the criteria
     
-    console.log(totalCostbill);
     if (totalCostbill >= 50){
         // adding the danger class will make the text red
         totalCostSettings.classList.add("danger");
@@ -65,6 +82,10 @@ BillTotalAddBtn.addEventListener('click',
     }
   }
 );
+
+
+
+
 
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the call / sms total
