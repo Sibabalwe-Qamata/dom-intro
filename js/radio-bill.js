@@ -21,6 +21,7 @@ RadioTotalAddBtn.addEventListener('click', function(){
    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
    var billItemType = checkedRadioBtn.value;
     // update the correct total
+    console.log(billItemType);
     if (billItemType === "call"){
         callsTotal += 2.75
     }
