@@ -42,23 +42,23 @@ function calculateBtnClicked(){
 }
 
 function colorWarning() {
+      if(billTotalElement.innerHTML < 20.00){
+         total.classList.remove("danger");
+         total.classList.remove("warning");
+         }
     
-       if (billTotalElement.innerHTML >= 20.00 ){
+       if (billTotalElement.innerHTML > 20.00 && 30.00 > billTotalElement.innerHTML ){
     
-         billTotalElement.innerHTML;
+         total.classList.add("warning");
          
-         
-         total.classList.toggle("warning");
+         total.classList.remove("danger");
          }
          
-         if(billTotalElement.innerHTML >= 30.00){
-             
-              billTotalElement.innerHTML;
-        
-             total.classList.toggle("danger");
-         
+         if(billTotalElement.innerHTML >30.00){
+             total.classList.remove("warning");
+             total.classList.add("danger");
         }
-
+         billTotalElement.innerHTML;
 }
 
 calculateBtn.addEventListener('click', function(){

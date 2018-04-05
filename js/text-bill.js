@@ -9,17 +9,17 @@ var callsTotal = 0;
 var smsTotal = 0;
 
 // get a reference to the textbox where the bill type is to be entered
-var billTypeText = document.querySelector(".billTypeText");
+var billText = document.querySelector(".billTypeText");
 
 //get a reference to the add button
 var textTotalAddBtn = document.querySelector(".addToBillBtn");
 
 //create a variable that will keep track of the total bill
-var totalCostElem = document.querySelector(".totalOne");
+var totalCostElementText = document.querySelector(".totalOne");
 
 // Variables that will track the total of calls and sms
-var callsTotalElem = document.querySelector(".callTotalOne");
-var smsTotalElem = document.querySelector(".smsTotalOne");
+var callsTotalElementText = document.querySelector(".callTotalOne");
+var smsTotalElementText = document.querySelector(".smsTotalOne");
 
 
 
@@ -28,7 +28,7 @@ var smsTotalElem = document.querySelector(".smsTotalOne");
 function textBillTotal()
 {
     // get the value entered in the billType textfield
-    var billTypeEntered = billTypeText.value.trim();
+    var billTypeEntered = billText.value.trim();
     // update the correct total
     if (billTypeEntered === "call"){
         callsTotal += 2.75;
@@ -41,22 +41,22 @@ function textBillTotal()
     
   
     //update the totals that is displayed on the screen.
-    callsTotalElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalElem.innerHTML = smsTotal.toFixed(2);
+    callsTotalElementText.innerHTML = callsTotal.toFixed(2);
+    smsTotalElementText.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
-    totalCostElem.innerHTML = totalCost.toFixed(2);
+    totalCostElementText.innerHTML = totalCost.toFixed(2);
     
     
-      console.log("Total cost: ",totalCost);
+      //console.log("Total cost: ",totalCost);
     //color the total based on the criteria
     if (totalCost >= 50){
         // adding the danger class will make the text red
         //callsTotalElem.innerHTML = callsTotal.toFixed(2);
         //smsTotalElem.innerHTML = smsTotal.toFixed(2);
-        totalCostElem.classList.add("danger");
+        totalCostElementText.classList.add("danger");
     }
     else if (totalCost >= 30){
-        totalCostElem.classList.add("warning");
+        totalCostElementText.classList.add("warning");
         //callsTotalElem.innerHTML = callsTotal.toFixed(2);
         //smsTotalElem.innerHTML = smsTotal.toFixed(2);
     }
