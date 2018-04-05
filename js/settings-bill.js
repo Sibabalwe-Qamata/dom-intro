@@ -1,5 +1,5 @@
-var callsTotalBill = 0;
-var smsTotalBill = 0;
+var callsTotalBill = 0.00;
+var smsTotalBill = 0.00;
 
 
 // get a reference to the sms or call radio buttons
@@ -35,10 +35,10 @@ var totalCostSettings = document.querySelector(".totalSettings");
        var warning_billSettingEntered = warningLevel.value;
        var critical_billSettingEntered = criticalLevel.value;
     
-       callCostVariable = call_billSettingEntered; 
-       smsCostVariable =  sms_billSettingEntered;
-       criticalVariable =  critical_billSettingEntered;
-       warningVariable = warning_billSettingEntered;
+       callCostVariable = parseFloat(call_billSettingEntered); 
+       smsCostVariable =  parseFloat(sms_billSettingEntered);
+       criticalVariable =  parseFloat(critical_billSettingEntered);
+       warningVariable = parseFloat(warning_billSettingEntered);
        //console.log("Call:",callCostVariable);
        //console.log("SMS:",smsCostVariable);
        //console.log("critical:",criticalVariable);
@@ -64,20 +64,20 @@ BillTotalAddBtn.addEventListener('click',
     console.log("calls",callsTotalBill);
     console.log("sms",smsTotalBill);
     //update the totals that is displayed on the screen.
-    callsTotalSettings.innerHTML = callsTotalBill;
+    callsTotalSettings.innerHTML = callsTotalBill.toFixed(2);
  
-    smsTotalSettings.innerHTML = smsTotalBill;
+    smsTotalSettings.innerHTML = smsTotalBill.toFixed(2);
 
     var totalCostbill = callsTotalBill + smsTotalBill;
-    totalCostSettings.innerHTML = totalCostbill;
+    totalCostSettings.innerHTML = totalCostbill.toFixed(2);
     console.log("total",totalCostbill);
     //color the total based on the criteria
     
-    if (totalCostbill >= 50){
+    if (totalCostbill >= criticalVariable){
         // adding the danger class will make the text red
         totalCostSettings.classList.add("danger");
     }
-    else if (totalCostbill >= 30){
+    else if (totalCostbill >= warningVariable){
         totalCostSettings.classList.add("warning");
     }
   }
