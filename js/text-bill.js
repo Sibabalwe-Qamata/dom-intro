@@ -36,32 +36,41 @@ function textBillTotal()
     else if (billTypeEntered === "sms"){
         smsTotal += 0.75;
     }
-    console.log("calls",callsTotal);
-    console.log("sms",smsTotal);
-    
+
   
     //update the totals that is displayed on the screen.
     callsTotalElementText.innerHTML = callsTotal.toFixed(2);
     smsTotalElementText.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
     totalCostElementText.innerHTML = totalCost.toFixed(2);
-    
-    
-      //console.log("Total cost: ",totalCost);
-    //color the total based on the criteria
-    if (totalCost >= 50){
-        // adding the danger class will make the text red
-        //callsTotalElem.innerHTML = callsTotal.toFixed(2);
-        //smsTotalElem.innerHTML = smsTotal.toFixed(2);
-        totalCostElementText.classList.add("danger");
-    }
-    else if (totalCost >= 30){
-        totalCostElementText.classList.add("warning");
-        //callsTotalElem.innerHTML = callsTotal.toFixed(2);
-        //smsTotalElem.innerHTML = smsTotal.toFixed(2);
-    }
 }
 
-textTotalAddBtn.addEventListener('click', textBillTotal);
+function colorWarningText() {
+      if(totalCostElementText.innerHTML < 30.00){
+            totalCostElementText.classList.remove("warning");
+             totalCostElementText.classList.remove("danger");
+         }
+    
+       if (totalCostElementText.innerHTML > 30.00 && 50.00 > totalCostElementText.innerHTML ){
+    
+             totalCostElementText.classList.remove("danger");
+             totalCostElementText.classList.add("warning");
+         }
+         
+         if(totalCostElementText.innerHTML >50.00){
+             totalCostElementText.classList.remove("warning");
+             totalCostElementText.classList.add("danger");
+        }
+         totalCostElementText.innerHTML;
+}
+
+
+textTotalAddBtn.addEventListener('click',
+        function()                 
+        {
+            textBillTotal();
+            colorWarningText();
+        }
+);
 
 
