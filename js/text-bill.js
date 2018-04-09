@@ -5,8 +5,8 @@
 // * display the latest total on the screen
 
 
-var callsTotal = 0;
-var smsTotal = 0;
+var callsTotaltext = 0;
+var smsTotaltext = 0;
 
 // get a reference to the textbox where the bill type is to be entered
 var billText = document.querySelector(".billTypeText");
@@ -31,18 +31,18 @@ function textBillTotal()
     var billTypeEntered = billText.value.trim();
     // update the correct total
     if (billTypeEntered === "call"){
-        callsTotal += 2.75;
+        callsTotaltext += 2.75;
     }
     else if (billTypeEntered === "sms"){
-        smsTotal += 0.75;
+        smsTotaltext += 0.75;
     }
 
   
     //update the totals that is displayed on the screen.
-    callsTotalElementText.innerHTML = callsTotal.toFixed(2);
-    smsTotalElementText.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totalCostElementText.innerHTML = totalCost.toFixed(2);
+    callsTotalElementText.innerHTML = callsTotaltext.toFixed(2);
+    smsTotalElementText.innerHTML = smsTotaltext.toFixed(2);
+    var totalCosttext = callsTotaltext + smsTotaltext;
+    totalCostElementText.innerHTML = totalCosttext.toFixed(2);
 }
 
 function colorWarningText() {

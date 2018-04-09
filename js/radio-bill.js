@@ -1,5 +1,5 @@
-var callsTotal = 0;
-var smsTotal = 0;
+var callsTotalradio = 0;
+var smsTotalradio = 0;
 
 // get a reference to the sms or call radio buttons
 
@@ -23,26 +23,26 @@ RadioTotalAddBtn.addEventListener('click', function(){
     // update the correct total
     console.log(billItemType);
     if (billItemType === "call"){
-        callsTotal += 2.75
+        callsTotalradio += 2.75
     }
     else if (billItemType === "sms"){
-        smsTotal += 0.75;
+        smsTotalradio += 0.75;
     }
     
     //update the totals that is displayed on the screen.
-    callsTotalElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalElem.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totalCostElem.innerHTML = totalCost.toFixed(2);
+    callsTotalElem.innerHTML = callsTotalradio.toFixed(2);
+    smsTotalElem.innerHTML = smsTotalradio.toFixed(2);
+    var totalCostradio = callsTotalradio + smsTotalradio;
+    totalCostElem.innerHTML = totalCostradio.toFixed(2);
     
     
       
     //color the total based on the criteria
-    if (totalCost >= 50){
+    if (totalCostradio >= 50){
         // adding the danger class will make the text red
         totalCostElem.classList.add("danger");
     }
-    else if (totalCost >= 30){
+    else if (totalCostradio >= 30){
         totalCostElem.classList.add("warning");
     }
 });
