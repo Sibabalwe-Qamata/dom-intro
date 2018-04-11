@@ -48,7 +48,7 @@ settingsBtn.addEventListener('click',updateSettings);
 
 //add an event listener for when the add button is pressed
 BillTotalAddBtn.addEventListener('click',
-   function()
+   function addTotal()
    {
     var checkedRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
     var billItem = checkedRadioBtn.value;
@@ -76,12 +76,14 @@ BillTotalAddBtn.addEventListener('click',
     if (totalCostbill >= criticalVariable){
         // adding the danger class will make the text red
         totalCostSettings.classList.add("danger");
+        BillTotalAddBtn.removeEventListener('click',addTotal,false);
     }
     else if (totalCostbill >= warningVariable){
         totalCostSettings.classList.add("warning");
     }
   }
 );
+
 
 
 
