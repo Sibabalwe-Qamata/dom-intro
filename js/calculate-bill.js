@@ -37,8 +37,6 @@ function calculateBtnClicked(){
     }
      var roundedBillTotal = billTotal.toFixed(2);
     billTotalElement.innerHTML = roundedBillTotal;
-    
-   
 }
 
 function colorWarning() {
