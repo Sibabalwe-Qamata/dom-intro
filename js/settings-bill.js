@@ -24,17 +24,61 @@ var settingsUpdate = SettingBillFactory();
 
 
 
+	
+	
+	
+function updateSetting()
+{
+	    var newCallCost = callCostStt.value;
+		settingsUpdate.calls(newCallCost);
+        var newSmsCost = smsCostStt.value;
+		settingsUpdate.sms(newSmsCost);
+        var newWarningSetting= warningLevel.value;
+		settingsUpdate.warning(newWarningSetting);
+        var newCriticalSetting = criticalLevel.value;
+		settingsUpdate.critical(newCriticalSetting);
     
+       /** var callCostSetting = settingsUpdate.setCallCost(call_billSettingEntered); 
+        var smsCostVariable = settingsUpdate.setSmsCost(sms_billSettingEntered);
+        var criticalVariable =  settingsUpdate.setCriticalWarning(call_billSettingEntered);
+        var warningVariable = settingsUpdate.setWarning(call_billSettingEntered);**/ 
+	
+}
+
+	
+function addBill()
+{
+	 var settingRadioItem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+	
+	if(settingRadioItem)
+	   {
+	   	 var Billtype = settingRadioItem.value.trim();
+		 settingsUpdate.sumBill(Billtype);
+		   
+	   }
+	
+	 callsTotalSettings.innerHTML = settingsUpdate.sumCall();
+	 smsTotalSettings.innerHTML = settingsUpdate.sumSms();
+	 totalCostSettings.innerHTML = settingsUpdate.sumTotal();
+
+	 //console.log(settingsUpdate.sumTotal);
+		
+}
+
 
 function colorSettingsUpdate() 
 {
+	var colorWarningTotal = settingsUpdate.sumTotal();
+	var colorWarningLevel = settingsUpdate.getWarning();
+	
+	var colorCriticalLevel = settingsUpdate.getCritical();
          
-    if (totalCostbill >= warningVariable){
+    if (colorWarningTotal  >= colorWarningLevel){
         totalCostSettings.classList.remove("danger");
         totalCostSettings.classList.add("warning");
     }
        
-    if (totalCostbill >= criticalVariable){
+    if ( colorWarningTotal  >= colorCriticalLevel) {
         // adding the danger class will make the text red
         totalCostSettings.classList.remove("warning");
         totalCostSettings.classList.add("danger");   
@@ -43,28 +87,14 @@ function colorSettingsUpdate()
 }
 
 //add an event listener for when the add button is pressed
-BillTotalAddBtn.addEventListener('click', function()
-{
-    
-    
-    
-    
-    
-    
+settingsBtn.addEventListener('click',updateSetting);
+BillTotalAddBtn.addEventListener('click',
+	function(){
+		addBill();
+		colorSettingsUpdate();
+	});
+
+
 });
 
-settingsBtn.addEventListener('click',function()
-    {
-        var call_billSettingEntered = parseFloat(callCostStt.value);
-        var sms_billSettingEntered = parseFloat(smsCostStt.value);
-        var warning_billSettingEntered = parseFloat(warningLevel.value);
-        var critical_billSettingEntered = parseFloat(criticalLevel.value);
-    
-        var callCostSetting = settingsUpdate.setCallCost(call_billSettingEntered); 
-        var smsCostVariable = settingsUpdate.setSmsCost(sms_billSettingEntered);
-        var criticalVariable =  settingsUpdate.setCriticalWarning(call_billSettingEntered);
-        var warningVariable = settingsUpdate.setWarning(call_billSettingEntered);
-    
-    });
-    
-});
+

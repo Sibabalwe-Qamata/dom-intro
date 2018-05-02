@@ -35,7 +35,7 @@ textTotalAddBtn.addEventListener('click',
         {
            
             var billTypeEntered = billText.value.trim();
-            console.log(billTypeEntered);
+            //console.log(billTypeEntered);
             var total = text_Bill.textBillTotal(billTypeEntered);
             var sms = text_Bill.smsCostTotal();
             var call = text_Bill.callCostTotal();
@@ -44,7 +44,7 @@ textTotalAddBtn.addEventListener('click',
             totalCostElementText.innerHTML = total;
             
     
-            if(total < 30.00){
+       if(total < 30.00){
             totalCostElementText.classList.remove("warning");
              totalCostElementText.classList.remove("danger");
          }

@@ -1,28 +1,42 @@
-function calculatebillFactoryF() 
+function calculatebillFactoryF(billValue) 
 {
-    function calculateBillTotal(billType)
-	{
 
-		   var billTotal = 0;
-            //loop over all the bill items
-            for (var i=0;i<billType.length;i++)
-            {
-                var billItem = billType[i].trim();
-                if (billItem === "call"){
-                    billTotal += 2.75;
-                }
-                else if (billItem === "sms"){
-                    billTotal += 0.75;
-                }
+    
+   var billTotal = 0;
+   
+       console.log('billValue : '+billValue);
+       
+        var calculateItems = billValue.split(',');
+
+                console.log('items :'+calculateItems);
+
+        for (var i =0; i<calculateItems.length;i++) {
+            //var billItem = billType[i];
+            //console.log(billItem);
+            if (calculateItems[i] === "call"){
+
+                billTotal += 2.75;
             }
-             var roundedBillTotal = billTotal.toFixed(2);
+            else if (calculateItems[i] === "sms"){
+                billTotal += 0.75;
+            }
+        }
+        return billTotal;
+   
+    
 
-		    return roundedBillTotal;
-	}
+    /**function getTotal(){
+        return billTotal.toFixed(2);
+         
+    }**/
 
+	// return {
+ //            calc :calculate,
+            
+	//        }
 
-	return {
-			calculateBillTotal,
-	       }
 
 }
+
+//calculatebillFactoryF().calc("call, sms");
+console.log("The total is "+ calculatebillFactoryF("call"));

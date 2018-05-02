@@ -11,32 +11,32 @@ function SettingBillFactory()
         
     function setCallCost(itemCall)
     {
+        callCostVariable = parseFloat(itemCall);
         
-        
-        return callCostVariable = itemCall ;
+        return callCostVariable.toFixed(2);
         
     }
     
     function setSmsCost(itemSmS)
     {
-       
+       	smsCostVariable = parseFloat(itemSmS);
         
-        return  smsCostVariable = itemSmS;
+        return  smsCostVariable.toFixed(2);
         
     }
     
     function setCriticalWarning(itemCritical)
     {
-        criticalVariable = itemCritical;
+        criticalVariable = parseFloat(itemCritical);
         
-        return criticalVariable;
+        return criticalVariable.toFixed(2);
     }
     
     function setWarning(warning)
     {
-        warningVariable = warning;
+        warningVariable = parseFloat(warning);
         
-        return warningVariable;
+        return warningVariable.toFixed(2);
         
     }
     
@@ -45,51 +45,57 @@ function SettingBillFactory()
     // update the correct total
             if (billItems === "call"){
                 callsTotalBill += callCostVariable;
-                totalCostbill += callCostVariable;
-                
-//                 if(totalCostbill < criticalVariable){
-//                     callsTotalBill = callsTotalBill + callCostVariable ;
-//                     //totalCostbill = totalCostbill + callCostVariable;
-//                    }
-//                 if (totalCostbill > criticalVariable){
-//                     callsTotalBill = callsTotalBill + 0 ;
-//                     callsTotalBill = totalCostbill -  callsTotalBill;
-                    // totalCostSettings.classList.add("danger");
-                        // totalCostbill = totalCostbill + 0;
-                //}
+                //totalCostbill += callCostVariable;
+                /**if(totalCostbill < criticalVariable){
+                    callsTotalBill += callCostVariable;
 
+                }
+
+                if(totalCostbill > criticalVariable){
+                     callsTotalBill += callsTotalBill+0;
+                } */
+                
             }
              if (billItems === "sms"){
-
+                smsTotalBill += smsCostVariable ;
                 //smsTotalBill = smsCostVariable + smsTotalBill;
                  if(totalCostbill < criticalVariable){
-                     smsTotalBill = smsTotalBill + smsCostVariable ;
+                     smsTotalBill += smsCostVariable ;
                      //totalCostbill =  totalCostbill + smsCostVariable;
                     }
                  if (totalCostbill > criticalVariable){  //Ended debbunging here
                      smsTotalBill = smsTotalBill + 0;
-                    // totalCostSettings.classList.add("danger");
-                         //totalCostbill = totalCostbill + 0;
+                   
                 }
-                  totalCostbill = callsTotalBill + smsTotalBill;
+                 
 
             }
-        
-   
-    
         
     }
     function callTotal() {return callsTotalBill.toFixed(2);}
     function smsTotal () {return smsTotalBill.toFixed(2);}
-    function total() {return totalCostbill.toFixed(2);}
+	function getCriticalValue(){
+		return criticalVariable.toFixed(2);
+	}
+	function getWarningValue(){
+		return warningVariable.toFixed(2);
+	}
+    function total() {
+		totalCostbill = callsTotalBill + smsTotalBill;
+		return totalCostbill.toFixed(2);
+	}
     return{
             
             calls : setCallCost,
             sms: setSmsCost,
             critical: setCriticalWarning,
             warning: setWarning,
+		
+		
             sumCall: callTotal,
             sumSms: smsTotal,
+			getWarning: getWarningValue,
+			getCritical: getCriticalValue,
             sumTotal: total,
             sumBill: addTotal
 
