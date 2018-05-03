@@ -70,7 +70,7 @@ function colorSettingsUpdate()
         // adding the danger class will make the text red
         totalCostSettings.classList.remove("warning");
         totalCostSettings.classList.add("danger"); 
-		 BillTotalAddBtn.disabled = false;
+		// BillTotalAddBtn.disabled = false;
     }
 	
  

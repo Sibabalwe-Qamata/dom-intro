@@ -54,7 +54,7 @@ function SettingBillFactory()
                      //totalCostbill =  totalCostbill + smsCostVariable;
                     }
                  if (totalCostbill > criticalVariable){  //Ended debbunging here
-                     smsTotalBill = smsTotalBill + 0;
+                     smsTotalBill = smsTotalBill+0;
                    
                 }
                  

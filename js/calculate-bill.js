@@ -14,22 +14,7 @@ var billTotalElement = document.querySelector(".billTotal");
 
 var total = document.querySelector(".total");
 
-		/**Logic Function
-        function PhoneBill(bill)
-        {
-         
-          var billsArray = bill.split(",");
-          var totalBill = 0;
-            for(var i=0; i < billsArray.length; i++)
-			{
-
-      		if(billsArray[i].trim() === 'call'){totalBill += 2.75;}
-		    else if(billsArray[i].trim() === 'sms'){totalBill += 0.75;}
-   			}
-			
-			return totalBill.toFixed(2);
-    
-		}**/
+	
 	
 	var calcBillPhone = billPhone();
 		function displayBill()
@@ -62,7 +47,7 @@ var total = document.querySelector(".total");
 			
 		}
     
-calculateBtn.addEventListener('click', displayBill, PhoneBill);
+calculateBtn.addEventListener('click', displayBill);
 });
 
 
