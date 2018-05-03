@@ -86,3 +86,11 @@ function SettingBillFactory()
 
         }
 }
+
+ var settings = SettingBillFactory();
+      settings.sms(2.50);
+      
+      settings.calls(5.00);
+      
+      settings.sumBill('call');
+

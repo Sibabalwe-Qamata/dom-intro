@@ -6,6 +6,8 @@ describe("The Settings Update function", function(){
       settings.sms(2.50);
       
       settings.calls(5.00);
+      settings.critical(10.00);
+      settings.warning(5.00);
       
       settings.sumBill('call');
       
@@ -21,6 +23,8 @@ describe("The Settings Update function", function(){
       settings.sms(2.50);
       
       settings.calls(5.00);
+         settings.critical(12.00);
+      settings.warning(6.00);
       
       settings.sumBill('sms');
       
@@ -37,6 +41,8 @@ describe("The Settings Update function", function(){
       settings.sms(2.50);
       
       settings.calls(5.00);
+      settings.critical(12.00);
+      settings.warning(9.00);
       
       settings.sumBill('sms');
 	  settings.sumBill('call');
@@ -54,6 +60,8 @@ describe("The Settings Update function", function(){
       settings.sms(2.50);
       
       settings.calls(5.00);
+      settings.critical(15.00);
+      settings.warning(7.00);
       
       settings.sumBill('call');
 	  settings.sumBill('call');
@@ -72,6 +80,8 @@ describe("The Settings Update function", function(){
       settings.sms(2.50);
       
       settings.calls(5.00);
+      settings.critical(20.00);
+      settings.warning(18.00);
       
       settings.sumBill('sms');
 	     settings.sumBill('sms');
