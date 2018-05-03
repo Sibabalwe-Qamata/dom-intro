@@ -58,10 +58,11 @@ function colorSettingsUpdate()
 {
 	
     
-   	var colorWarningTotal = settingsUpdate.sumTotal();
-	var colorWarningLevel = settingsUpdate.getWarning();
+   	var colorWarningTotal = parseFloat(settingsUpdate.sumTotal());
+	var colorWarningLevel = parseFloat(settingsUpdate.getWarning());
 	
-	var colorCriticalLevel = settingsUpdate.getCritical();
+	var colorCriticalLevel = parseFloat(settingsUpdate.getCritical());
+    console.log(colorCriticalLevel);
          
     if (colorWarningTotal  > colorWarningLevel)
 	{
