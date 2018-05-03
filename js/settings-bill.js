@@ -64,7 +64,7 @@ function colorSettingsUpdate()
 	var colorCriticalLevel = parseFloat(settingsUpdate.getCritical());
     console.log(colorCriticalLevel);
          
-    if (colorWarningTotal  > colorWarningLevel)
+    if (colorWarningTotal  >= colorWarningLevel)
 	{
         totalCostSettingsElem.classList.remove("danger");
         totalCostSettingsElem.classList.add("warning");
@@ -73,7 +73,7 @@ function colorSettingsUpdate()
         
     }
        
-    if ( colorWarningTotal  > colorCriticalLevel)
+    if ( colorWarningTotal  >= colorCriticalLevel)
 	{
         // adding the danger class will make the text red
         totalCostSettingsElem.classList.remove("warning");
