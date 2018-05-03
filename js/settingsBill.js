@@ -1,9 +1,9 @@
 function SettingBillFactory()
 {
-       var callsTotalBill = 0;
-       var smsTotalBill = 0;
+        var callsTotalBill = 0;
+        var smsTotalBill = 0;
         var totalCostbill = 0; 
-    
+
         var warningVariable = 0;
         var criticalVariable = 0;
         var smsCostVariable =0;
@@ -44,36 +44,31 @@ function SettingBillFactory()
     {
     // update the correct total
             if (billItems === "call"){
-                callsTotalBill += callCostVariable;
+                if(totalCostbill < criticalVariable){
+                    callsTotalBill += callCostVariable;
+                   }
+               
             }
-             if (billItems === "sms"){
-                smsTotalBill += smsCostVariable ;
-                //smsTotalBill = smsCostVariable + smsTotalBill;
-                 if(totalCostbill < criticalVariable){
-                     smsTotalBill += smsCostVariable ;
-                     //totalCostbill =  totalCostbill + smsCostVariable;
-                    }
-                 if (totalCostbill > criticalVariable){  //Ended debbunging here
-                     smsTotalBill = smsTotalBill+0;
-                   
+            if (billItems === "sms"){
+                if (totalCostbill < criticalVariable){
+                    
+                   smsTotalBill += smsCostVariable; 
                 }
-                 
-
+                
             }
-        
     }
+    
     function callTotal() {return callsTotalBill.toFixed(2);}
     function smsTotal () {return smsTotalBill.toFixed(2);}
-	function getCriticalValue(){
-		return criticalVariable.toFixed(2);
-	}
-	function getWarningValue(){
-		return warningVariable.toFixed(2);
-	}
-    function total() {
+	function getCriticalValue(){return criticalVariable.toFixed(2);}
+	function getWarningValue(){return warningVariable.toFixed(2);}
+    
+    function total(){
 		totalCostbill = callsTotalBill + smsTotalBill;
 		return totalCostbill.toFixed(2);
 	}
+    
+    
     return{
             
             calls : setCallCost,

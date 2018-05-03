@@ -16,14 +16,15 @@ var settingsBtn = document.querySelector(".updateSettings");
 // create a variables that will keep track of all the settings
 
 // create a variables that will keep track of all three totals.
-var totalCostSettings = document.querySelector(".totalSettings");
+var totalCostSettingsElem = document.querySelector(".totalSettings");
 //add an event listener for when the 'Update settings' button is pressed
 
 
 var settingsUpdate = SettingBillFactory();
 
-function updateSetting()
-{
+
+    function updateSetting()
+    {
 	    var newCallCost = callCostStt.value;
 		settingsUpdate.calls(newCallCost);
         var newSmsCost = smsCostStt.value;
@@ -32,7 +33,7 @@ function updateSetting()
 		settingsUpdate.warning(newWarningSetting);
         var newCriticalSetting = criticalLevel.value;
 		settingsUpdate.critical(newCriticalSetting);	
-}
+    }
 
 	
 function addBill()
@@ -48,36 +49,47 @@ function addBill()
 	
 	 callsTotalSettings.innerHTML = settingsUpdate.sumCall();
 	 smsTotalSettings.innerHTML = settingsUpdate.sumSms();
-	 totalCostSettings.innerHTML = settingsUpdate.sumTotal();		
+            totalCostSettingsElem.innerHTML = settingsUpdate.sumTotal();	
+	 	
 }
 
 
 function colorSettingsUpdate() 
 {
-	var colorWarningTotal = settingsUpdate.sumTotal();
+	
+    
+   	var colorWarningTotal = settingsUpdate.sumTotal();
 	var colorWarningLevel = settingsUpdate.getWarning();
 	
 	var colorCriticalLevel = settingsUpdate.getCritical();
          
-    if (colorWarningTotal  >= colorWarningLevel)
+    if (colorWarningTotal  > colorWarningLevel)
 	{
-        totalCostSettings.classList.remove("danger");
-        totalCostSettings.classList.add("warning");
+        totalCostSettingsElem.classList.remove("danger");
+        totalCostSettingsElem.classList.add("warning");
+        
+        //totalCostSettingsElem.innerHTML = settingsUpdate.sumTotal();	
+        
     }
        
-    if ( colorWarningTotal  >= colorCriticalLevel)
+    if ( colorWarningTotal  > colorCriticalLevel)
 	{
         // adding the danger class will make the text red
-        totalCostSettings.classList.remove("warning");
-        totalCostSettings.classList.add("danger"); 
+        totalCostSettingsElem.classList.remove("warning");
+        totalCostSettingsElem.classList.add("danger"); 
+        
+
 		// BillTotalAddBtn.disabled = false;
     }
-	
+    
+    
+  
  
 }
 
 //add an event listener for when the add button is pressed
 settingsBtn.addEventListener('click',updateSetting);
+
 BillTotalAddBtn.addEventListener('click',
 	function(){
 		addBill();
