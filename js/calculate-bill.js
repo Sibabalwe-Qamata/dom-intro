@@ -14,49 +14,55 @@ var billTotalElement = document.querySelector(".billTotal");
 
 var total = document.querySelector(".total");
 
-var calculate_Bill =  calculatebillFactoryF();
-
-
-
-    
-calculateBtn.addEventListener('click', 
-        function()
+		/**Logic Function
+        function PhoneBill(bill)
         {
-            // get the string entered in the textArea
-            var billString = billStringField.value;
-            //split the string
-          
-            
-            // a variable for the total phone bill.
-            //calculate_Bill.calculateBillTotal(billItems);
+         
+          var billsArray = bill.split(",");
+          var totalBill = 0;
+            for(var i=0; i < billsArray.length; i++)
+			{
 
-            calculate_Bill.calculatebillFactoryF(billItems);
-
-            var displayTotal =  calculatebillFactoryF();
-            
-
-            billTotalElement.innerHTML = displayTotal;
-          
-
+      		if(billsArray[i].trim() === 'call'){totalBill += 2.75;}
+		    else if(billsArray[i].trim() === 'sms'){totalBill += 0.75;}
+   			}
+			
+			return totalBill.toFixed(2);
     
-          if(billTotalElement.innerHTML < 20.00){
-             total.classList.remove("danger");
-             total.classList.remove("warning");
+		}**/
+	
+	var calcBillPhone = billPhone();
+		function displayBill()
+	    {
+			
+			var stringBill = billStringField.value;
+			
+			var Billtotal = calcBillPhone.phone(stringBill);
+			
+		  billTotalElement.innerHTML  = Billtotal;
+			
+          if(billTotalElement.innerHTML < 20.00)
+		     {
+               total.classList.remove("danger");
+               total.classList.remove("warning");
              }
 
-           if (billTotalElement.innerHTML > 20.00 && 30.00 > billTotalElement.innerHTML ){
+           if (billTotalElement.innerHTML > 20.00 && 30.00 > billTotalElement.innerHTML )
+		   {
 
-             total.classList.add("warning");
+               total.classList.add("warning");
+			   total.classList.remove("danger");
+           }
 
-             total.classList.remove("danger");
-             }
-
-             if(billTotalElement.innerHTML >30.00){
+           if(billTotalElement.innerHTML >30.00)
+		    {
                  total.classList.remove("warning");
                  total.classList.add("danger");
             }
+			
+		}
     
-        });
+calculateBtn.addEventListener('click', displayBill, PhoneBill);
 });
 
 

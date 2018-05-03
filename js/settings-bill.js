@@ -22,11 +22,6 @@ var totalCostSettings = document.querySelector(".totalSettings");
 
 var settingsUpdate = SettingBillFactory();
 
-
-
-	
-	
-	
 function updateSetting()
 {
 	    var newCallCost = callCostStt.value;
@@ -36,13 +31,7 @@ function updateSetting()
         var newWarningSetting= warningLevel.value;
 		settingsUpdate.warning(newWarningSetting);
         var newCriticalSetting = criticalLevel.value;
-		settingsUpdate.critical(newCriticalSetting);
-    
-       /** var callCostSetting = settingsUpdate.setCallCost(call_billSettingEntered); 
-        var smsCostVariable = settingsUpdate.setSmsCost(sms_billSettingEntered);
-        var criticalVariable =  settingsUpdate.setCriticalWarning(call_billSettingEntered);
-        var warningVariable = settingsUpdate.setWarning(call_billSettingEntered);**/ 
-	
+		settingsUpdate.critical(newCriticalSetting);	
 }
 
 	
@@ -59,10 +48,7 @@ function addBill()
 	
 	 callsTotalSettings.innerHTML = settingsUpdate.sumCall();
 	 smsTotalSettings.innerHTML = settingsUpdate.sumSms();
-	 totalCostSettings.innerHTML = settingsUpdate.sumTotal();
-
-	 //console.log(settingsUpdate.sumTotal);
-		
+	 totalCostSettings.innerHTML = settingsUpdate.sumTotal();		
 }
 
 
@@ -73,16 +59,20 @@ function colorSettingsUpdate()
 	
 	var colorCriticalLevel = settingsUpdate.getCritical();
          
-    if (colorWarningTotal  >= colorWarningLevel){
+    if (colorWarningTotal  >= colorWarningLevel)
+	{
         totalCostSettings.classList.remove("danger");
         totalCostSettings.classList.add("warning");
     }
        
-    if ( colorWarningTotal  >= colorCriticalLevel) {
+    if ( colorWarningTotal  >= colorCriticalLevel)
+	{
         // adding the danger class will make the text red
         totalCostSettings.classList.remove("warning");
-        totalCostSettings.classList.add("danger");   
+        totalCostSettings.classList.add("danger"); 
+		 BillTotalAddBtn.disabled = false;
     }
+	
  
 }
 
@@ -93,6 +83,7 @@ BillTotalAddBtn.addEventListener('click',
 		addBill();
 		colorSettingsUpdate();
 	});
+
 
 
 });

@@ -45,16 +45,6 @@ function SettingBillFactory()
     // update the correct total
             if (billItems === "call"){
                 callsTotalBill += callCostVariable;
-                //totalCostbill += callCostVariable;
-                /**if(totalCostbill < criticalVariable){
-                    callsTotalBill += callCostVariable;
-
-                }
-
-                if(totalCostbill > criticalVariable){
-                     callsTotalBill += callsTotalBill+0;
-                } */
-                
             }
              if (billItems === "sms"){
                 smsTotalBill += smsCostVariable ;
