@@ -32,6 +32,18 @@ let billInfoRadio = {
  let compileInfoRadio = compileTemplateRadio(billInfoRadio);
  showTwo.innerHTML = compileInfoRadio;
 
+ function colorChangeRadio(totalWarning)
+ {
+     if (totalWarning> 30.00 && 50.00 > totalWarning)
+     {
+         return 'warning';
+     }
+     
+     else if(totalWarning >50.00){
+        
+         return 'danger';
+     }
+ }
 
 
 var radioFactoryF = radioBillFactoryF();
@@ -48,25 +60,21 @@ function()
     //update the totals that is displayed on the screen.
             radioFactoryF.radioCalculate(billItemType);
 
+            let sum = radioFactoryF.totalBill();
+            let colorsRadio = colorChangeRadio(sum);
+
             let billInfoRadio = {
                 call : radioFactoryF.callTotal(),
                 sms : radioFactoryF.smsTotal(),
-                total : radioFactoryF.totalBill()
+                total : radioFactoryF.totalBill(),
+                color: colorsRadio
              };
 
             let compileBillInfoRadio = compileTemplateRadio(billInfoRadio);
             showTwo.innerHTML = compileBillInfoRadio;
 
     
-    let sum = radioFactoryF.totalBill();
-    //color the total based on the criteria
-    if (sum >= 50){
-        // adding the danger class will make the text red
-        totalCostElem.classList.add("danger");
-    }
-    else if (sum >= 30){
-        totalCostElem.classList.add("warning");
-    }
+    
     });
 
 });

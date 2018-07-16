@@ -33,7 +33,18 @@ let show = document.querySelector('.showOne');
 let templateBill = document.querySelector('.TemplateBill').innerHTML;
 let compileTemplate = Handlebars.compile(templateBill);
 
-
+    function colorChange(totalWarning)
+    {
+        if (totalWarning> 30.00 && 50.00 > totalWarning)
+        {
+            return 'warning';
+        }
+        
+        else if(totalWarning >50.00){
+           
+            return 'danger';
+        }
+    }
 
 //Get the object to show the Data
 let billInfo = {
@@ -53,34 +64,21 @@ textTotalAddBtn.addEventListener('click',
             //console.log(billTypeEntered);
             text_Bill.textBillTotal(billTypeEntered);
           
+            let total= text_Bill.sumBill();
+
+            let colors = colorChange(total);
+            console.log(colors);
 
             let billInfo = {
                 call : text_Bill.callCostTotal(),
                 sms : text_Bill.smsCostTotal(),
-                total : text_Bill.sumBill()
+                total : text_Bill.sumBill(),
+                color : colors
              };
 
             let compileBillInfo = compileTemplate(billInfo);
             show.innerHTML = compileBillInfo;
            
-        let sum = text_Bill.sumBill();
-
-        console.log(sum);
-       if(sum < 30.00){
-           // totalCostElementText.classList.remove("warning");
-             //totalCostElementText.classList.remove("danger");
-         }
-    
-       if (sum> 30.00 && 50.00 > sum){
-    
-             //totalCostElementText.classList.remove("danger");
-             document.querySelector(".totalHandlebars").classList.contains("warning");
-         }
-         
-         if(sum >50.00){
-             //totalCostElementText.classList.remove("warning");
-             totalCostElementText.classList.add("danger");
-         }
     
         }
                           
