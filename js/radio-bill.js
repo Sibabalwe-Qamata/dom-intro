@@ -1,4 +1,6 @@
 
+
+"use strict";
 document.addEventListener('DOMContentLoaded', function() 
 {
 
@@ -15,6 +17,22 @@ var RadioTotalAddBtn = document.querySelector(".radioBillAddBtn");
 var totalCostElem = document.querySelector(".totalTwo");
 var billTypeRadio = document.querySelector(".billItemTypeRadio");
 
+//Reference Handlebars Session.....
+let showTwo = document.querySelector('.showTwo');
+let templateBillRadio = document.querySelector('.TemplateBill').innerHTML;
+let compileTemplateRadio = Handlebars.compile(templateBillRadio);
+
+
+//Get the object to show the Data
+let billInfoRadio = {
+    call : 0.00.toFixed(2),
+    sms : 0.00.toFixed(2),
+    total : 0.00.toFixed(2)
+ };
+ let compileInfoRadio = compileTemplateRadio(billInfoRadio);
+ showTwo.innerHTML = compileInfoRadio;
+
+
 
 var radioFactoryF = radioBillFactoryF();
 //add an event listener for when the add button is pressed
@@ -28,18 +46,18 @@ function()
 
     
     //update the totals that is displayed on the screen.
-    var radioAdd = radioFactoryF.radioCalculate(billItemType);
-    var callsTotals = radioFactoryF.callTotal(); 
-    var smsTotals = radioFactoryF.smsTotal();
-    var sum = radioFactoryF.totalBill();
-    
-    
-    callsTotalElem.innerHTML = callsTotals;
-    smsTotalElem.innerHTML = smsTotals;
-    totalCostElem.innerHTML = sum;
-    
-    
-      
+             let sum = radioFactoryF.radioCalculate(billItemType);
+
+            let billInfoRadio = {
+                call : radioFactoryF.callTotal(),
+                sms : radioFactoryF.smsTotal(),
+                total : radioFactoryF.totalBill()
+             };
+
+            let compileBillInfoRadio = compileTemplate(billInfoRadio);
+            showTwo.innerHTML = compileBillInfoRadio;
+
+
     //color the total based on the criteria
     if (sum >= 50){
         // adding the danger class will make the text red
