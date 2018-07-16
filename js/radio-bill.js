@@ -46,7 +46,7 @@ function()
 
     
     //update the totals that is displayed on the screen.
-             let sum = radioFactoryF.radioCalculate(billItemType);
+            radioFactoryF.radioCalculate(billItemType);
 
             let billInfoRadio = {
                 call : radioFactoryF.callTotal(),
@@ -57,7 +57,8 @@ function()
             let compileBillInfoRadio = compileTemplateRadio(billInfoRadio);
             showTwo.innerHTML = compileBillInfoRadio;
 
-
+    
+    let sum = radioFactoryF.totalBill();
     //color the total based on the criteria
     if (sum >= 50){
         // adding the danger class will make the text red

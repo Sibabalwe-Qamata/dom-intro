@@ -20,7 +20,7 @@ var billText = document.querySelector(".billTypeText");
 var textTotalAddBtn = document.querySelector(".addToBillBtn");
 
 //create a variable that will keep track of the total bill
-
+let totalCostElementText = document.querySelector(".totalHandlebars");
 
 // Variables that will track the total of calls and sms
 var callsTotalElementText = document.querySelector(".callTotalOne");
@@ -34,7 +34,7 @@ let templateBill = document.querySelector('.TemplateBill').innerHTML;
 let compileTemplate = Handlebars.compile(templateBill);
 
 
-let totalCostElementText = document.querySelector(".totalOne");
+
 //Get the object to show the Data
 let billInfo = {
     call : 0.00.toFixed(2),
@@ -51,19 +51,21 @@ textTotalAddBtn.addEventListener('click',
            
             var billTypeEntered = billText.value.trim();
             //console.log(billTypeEntered);
-            let sum = text_Bill.textBillTotal(billTypeEntered);
+            text_Bill.textBillTotal(billTypeEntered);
           
 
             let billInfo = {
                 call : text_Bill.callCostTotal(),
                 sms : text_Bill.smsCostTotal(),
-                total : sum
+                total : text_Bill.sumBill()
              };
 
             let compileBillInfo = compileTemplate(billInfo);
             show.innerHTML = compileBillInfo;
            
-            
+        let sum = text_Bill.sumBill();
+
+        console.log(sum);
        if(sum < 30.00){
            // totalCostElementText.classList.remove("warning");
              //totalCostElementText.classList.remove("danger");
@@ -72,7 +74,7 @@ textTotalAddBtn.addEventListener('click',
        if (sum> 30.00 && 50.00 > sum){
     
              //totalCostElementText.classList.remove("danger");
-             totalCostElementText.classList.add("warning");
+             document.querySelector(".totalHandlebars").classList.contains("warning");
          }
          
          if(sum >50.00){

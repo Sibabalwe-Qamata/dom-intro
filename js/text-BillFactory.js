@@ -1,10 +1,11 @@
 
+"use strict";
 function Text_billFactoryF () 
 {
 
 	var callsTotaltext = 0;
     var smsTotaltext = 0;
-
+	let totalCosttext = 0;
 
     function textBillTotal(billType)
 	{
@@ -20,9 +21,8 @@ function Text_billFactoryF ()
 		        smsTotaltext.toFixed(2);
 		    }
 
-		    var totalCosttext = callsTotaltext + smsTotaltext;
-		 
-		    return totalCosttext.toFixed(2);
+		     totalCosttext = callsTotaltext + smsTotaltext;
+		  
 	}
 
 
@@ -36,12 +36,17 @@ function Text_billFactoryF ()
 		
 	}
 
+	function sumBill (){
+		return totalCosttext.toFixed(2);
+	}
+
 
 
 	return {
 			textBillTotal,
 			callCostTotal,
-			smsCostTotal
+			smsCostTotal,
+			sumBill
 	}
 
 }
