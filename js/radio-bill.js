@@ -14,7 +14,7 @@ var smsTotalElem = document.querySelector(".smsTotalTwo");
 
 var RadioTotalAddBtn = document.querySelector(".radioBillAddBtn");
 //create a variable that will keep track of the total bill
-var totalCostElem = document.querySelector(".totalTwo");
+var totalCostElem = document.querySelector(".totalOne");
 var billTypeRadio = document.querySelector(".billItemTypeRadio");
 
 //Reference Handlebars Session.....
@@ -54,7 +54,7 @@ function()
                 total : radioFactoryF.totalBill()
              };
 
-            let compileBillInfoRadio = compileTemplate(billInfoRadio);
+            let compileBillInfoRadio = compileTemplateRadio(billInfoRadio);
             showTwo.innerHTML = compileBillInfoRadio;
 
 
